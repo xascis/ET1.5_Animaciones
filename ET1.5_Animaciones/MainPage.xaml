@@ -1,0 +1,58 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ET1._5_Animaciones"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" xmlns:Core="using:Microsoft.Xaml.Interactions.Core" xmlns:Media="using:Microsoft.Xaml.Interactions.Media"
+    x:Class="ET1._5_Animaciones.MainPage"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <Storyboard x:Name="AnimWheel">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="wheel">
+                <EasingDoubleKeyFrame KeyTime="0:0:6" Value="600"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:8" Value="870.333"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:11" Value="1170.333"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.Rotation)" Storyboard.TargetName="wheel">
+                <EasingDoubleKeyFrame KeyTime="0:0:6" Value="720"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:8" Value="1440">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <ExponentialEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:11" Value="2160"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="wheel">
+                <EasingDoubleKeyFrame KeyTime="0:0:6" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:8" Value="262.167"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationX)" Storyboard.TargetName="wheel">
+                <EasingDoubleKeyFrame KeyTime="0:0:6" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:8" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Page.Resources>
+
+    <Canvas x:Name="canvas" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Image x:Name="wheel" Height="100" Canvas.Left="10" Canvas.Top="238" Width="100" Source="Assets/car_wheel.png" RenderTransformOrigin="0.5,0.5" Tapped="wheel_Tapped">
+            <Image.Projection>
+                <PlaneProjection/>
+            </Image.Projection>
+            <Image.RenderTransform>
+                <CompositeTransform/>
+            </Image.RenderTransform>
+        </Image>
+        <Rectangle x:Name="rectangle" Fill="#FF3B3B42" Height="163" Stroke="Black" Canvas.Top="338" Width="647" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <CompositeTransform/>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle x:Name="rectangle1" Fill="#FF3B3B42" Height="185" Canvas.Left="527" Stroke="Black" Canvas.Top="442.5" Width="372" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+            <Rectangle.RenderTransform>
+                <CompositeTransform Rotation="45"/>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle Fill="#FF3B3B42" Height="130" Canvas.Left="632" Stroke="Black" Canvas.Top="600" Width="821"/>
+    </Canvas>
+</Page>
